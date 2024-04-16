@@ -39,7 +39,8 @@ public class ScreenManager : MonoBehaviour
         MainScreen,
         AddPlayers,
         CreateTeams,
-        Shop
+        Shop,
+        SettingsDialog
     }
     // Voeg je ScreenTypeEnum hier toe
 

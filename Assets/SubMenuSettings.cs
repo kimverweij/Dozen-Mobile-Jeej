@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static ScreenManager;
 
 public class SubMenuSettings : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class SubMenuSettings : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OpenSettings(){
+        ScreenManager.Instance.GoToScreen(ScreenTypeEnum.SettingsDialog);
     }
 
     
