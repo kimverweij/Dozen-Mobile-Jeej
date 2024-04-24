@@ -11,6 +11,7 @@ public class PlayerItemController : MonoBehaviour
     public TextMeshProUGUI NameTextField;
     public CanvasGroup PlayerCanvas;
 
+
     private int teamIndex;
     private int playerIndex;
 
