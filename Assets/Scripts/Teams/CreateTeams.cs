@@ -13,9 +13,11 @@ public class CreateTeams : MonoBehaviour
     public GameObject teamPannelToClone;
     public GameObject AddTeamButton;
 
-    // instantiate format teams
+
+
     private FormatTeams teamFormatter;
-    
+
+
     private List<GameObject> teamPanels = new List<GameObject>();
     private List<TeamController> teamControllers = new List<TeamController>();
 
@@ -24,22 +26,20 @@ public class CreateTeams : MonoBehaviour
 
     // Start is called before the first frame update
 
-    void Start()
+    void Awake()
     {
+
+        teamFormatter = gameObject.AddComponent<FormatTeams>();
+
+
+    }
+
+    private void Start()
+    {
+        // test remove later
+        GlobalSettings.instance.PlayerNames = FakeCreateTeams.instance.PlayerNames;
         DisplayTeamsInformation();
     }
-
-
-    private void OnEnable()
-    {
-        Debug.Log("Ik wordt aangezet!!");
-        teamLists = teamFormatter.SetTeams(GlobalSettings.instance.PlayerNames);
-        // print team list
-        teamFormatter.PrintTeams(teamLists);
-        ReCreateTeams();
-        DisplayAddTeamButton();
-    }
-
     private void printList()
     {
         for (int i = 0; i < GlobalSettings.instance.PlayerNames.Count; i++)
@@ -48,20 +48,16 @@ public class CreateTeams : MonoBehaviour
         }
     }
 
+    // funciton is called from next button in add player screen
     public void DisplayTeamsInformation()
     {
         List<string> playerNames = GlobalSettings.instance.PlayerNames;
-
-        teamFormatter = gameObject.AddComponent<FormatTeams>();
 
         // format teams
         teamLists = teamFormatter.SetTeams(playerNames);
         teamFormatter.Shuffle2DimensionalList(teamLists);
         // print team list
         teamFormatter.PrintTeams(teamLists);
-
-
-        // fill teams
 
         InitiateTeams();
         ReCreateTeams();
@@ -72,7 +68,7 @@ public class CreateTeams : MonoBehaviour
     private void InitiateTeams()
     {
         int teamsNeeded = GlobalSettings.instance.maxTeams ;
-        for (int i = 0; i < teamsNeeded; i++)
+        for (int i = teamPanels.Count; i < teamsNeeded; i++)
         {
             GameObject teamPanel = Instantiate(teamPannelToClone, transform);
             teamPanels.Add(teamPanel);
@@ -122,6 +118,7 @@ public class CreateTeams : MonoBehaviour
 
         int IndexTeamA     = playerAItemSettings.getTeamIndex();
         int IndexPlayerA   = playerAItemSettings.getPlayerIndex();
+
         string playerAName = teamLists[IndexTeamA][IndexPlayerA]; 
 
 
