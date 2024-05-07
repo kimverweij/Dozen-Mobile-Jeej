@@ -37,7 +37,7 @@ public class CreateTeams : MonoBehaviour
     private void Start()
     {
         // test remove later
-        GlobalSettings.instance.PlayerNames = FakeCreateTeams.instance.PlayerNames;
+       // GlobalSettings.instance.PlayerNames = FakeCreateTeams.instance.PlayerNames;
         DisplayTeamsInformation();
     }
     private void printList()
