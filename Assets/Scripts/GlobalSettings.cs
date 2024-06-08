@@ -13,7 +13,13 @@ public class GlobalSettings : MonoBehaviour
     public readonly int maxPpTeam = 5;
     public readonly int minTeams = 2;
 
+
+    // time per round
+    public readonly float TimePerRound = 60f;
+
+
     public bool EnableHaptic = false;
+ 
 
 
 
